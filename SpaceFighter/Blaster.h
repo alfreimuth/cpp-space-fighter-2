@@ -12,6 +12,7 @@ public:
 	/** @brief Instantiate a blaster object.
 		@param isActive A flag to determine if the weapon is active. */
 	Blaster(const std::string &key) : Weapon(key) { }
+	Blaster(const std::string& key, TriggerType type) : Weapon(key, true, true, type) { }
 	virtual ~Blaster() { }
 
 	/** @brief Update the blaster.

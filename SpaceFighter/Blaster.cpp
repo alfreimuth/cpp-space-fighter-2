@@ -13,11 +13,12 @@ void Blaster::Fire(TriggerType triggerType)
 	if (!triggerType.Contains(GetTriggerType())) return;
 
 	Projectile* pProjectile = GetProjectile();
+	
 	if (!pProjectile) return;
 
 	AudioSample* pAudio = GetFireSound();
 	if (pAudio) pAudio->Play();
 
-	pProjectile->Activate(GetPosition(), IsAttachedToPlayer());
+	pProjectile->Activate(GetPosition()+5, IsAttachedToPlayer());
 	m_cooldown = m_cooldownSeconds;
 }

@@ -11,7 +11,8 @@ void PlayerShip::LoadContent(ResourceManager& resourceManager)
 
 	AudioSample* pAudio = resourceManager.Load<AudioSample>("Audio\\Effects\\Laser.wav");
 	pAudio->SetVolume(0.5f);
-	GetWeapon("Main Blaster")->SetFireSound(pAudio);
+	GetWeapon("Blaster " + 0)->SetFireSound(pAudio);
+	GetWeapon("Blaster " + 1)->SetFireSound(pAudio);
 
 	SetPosition(Game::GetScreenCenter() + Vector2::UNIT_Y * 300);
 
@@ -41,8 +42,8 @@ void PlayerShip::HandleInput(const InputState& input)
 
 		TriggerType type = TriggerType::None;
 		if (input.IsKeyDown(Key::SPACE)) type |= TriggerType::Primary;
-		//if (input.IsKeyDown(Key::D)) type |= TriggerType::Secondary;
-		//if (input.IsKeyDown(Key::S)) type |= TriggerType::Special;
+		if (input.IsKeyDown(Key::D)) type |= TriggerType::Secondary;
+		if (input.IsKeyDown(Key::S)) type |= TriggerType::Special;
 
 		//// Handle Xbox Controller
 		//GamePadState* pState = input.GetGamePadState(0);

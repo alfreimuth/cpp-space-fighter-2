@@ -19,6 +19,12 @@ public:
 	static const TriggerType Special;
 	static const TriggerType All;
 
+	TriggerType TriggerType::StringToTriggerType(int type) // cycle through array for multiple weapons
+	{
+		if (type == 0) return TriggerType::Primary;
+		if (type == 1) return TriggerType::Secondary;
+		if (type == 2) return TriggerType::Special;
+	}
 
 	TriggerType &TriggerType::operator=(const TriggerType &type)
 	{

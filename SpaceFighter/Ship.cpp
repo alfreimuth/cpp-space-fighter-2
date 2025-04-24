@@ -58,13 +58,13 @@ void Ship::Initialize()
 
 void Ship::FireWeapons(TriggerType triggerType)
 {
-	//m_weaponIt = m_weapons.begin();
-	//for (; m_weaponIt != m_weapons.end(); m_weaponIt++)
-	//{
-	//	(*m_weaponIt)->Fire(type);
-	//}
+	/*m_weaponIt = m_weapons.begin();
+	for (; m_weaponIt != m_weapons.end(); m_weaponIt++)
+	{
+		(*m_weaponIt)->Fire(type);
+	}*/
 
-	m_attachmentIt = m_attachments.begin();
+  	m_attachmentIt = m_attachments.begin();
 	for (; m_attachmentIt != m_attachments.end(); m_attachmentIt++)
 	{
 		if (m_attachmentIt->second->GetAttachmentType() != "Weapon") continue;

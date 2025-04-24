@@ -3,6 +3,8 @@
 #include "EnemyShip.h"
 #include "Blaster.h"
 #include "GameplayScreen.h"
+#include "TriggerType.h"
+
 
 std::vector<Explosion *> Level::s_explosions;
 
@@ -44,11 +46,19 @@ Level::Level()
 	
 	GameObject::SetCurrentLevel(this);
 
+
+
 	// Setup player ship
 	m_pPlayerShip = new PlayerShip();
-	Blaster *pBlaster = new Blaster("Main Blaster");
-	pBlaster->SetProjectilePool(&m_projectiles);
-	m_pPlayerShip->AttachItem(pBlaster, Vector2::UNIT_Y * -20);
+
+	
+
+	for (int i = 0; i < 3; i++) 
+	{
+		Blaster* pBlaster = new Blaster("Blaster " + i, StringToTriggerType(i));
+		pBlaster->SetProjectilePool(&m_projectiles);
+		m_pPlayerShip->AttachItem(pBlaster, Vector2::UNIT_Y * -20 + (i*-20));
+	}
 
 	for (int i = 0; i < 100; i++)
 	{

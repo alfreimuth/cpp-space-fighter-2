@@ -42,10 +42,10 @@ public:
 		@return Returns the collision type of the ship. */
 	virtual CollisionType GetCollisionType() const = 0;
 
-	/** @brief Attaches a weapon to the ship.
-		@param pWeapon A pointer to the weapon to attach.
-		@param position The position on the ship that the weapon will be attached,
-		offset from the center of the ship. */
+	///** @brief Attaches a weapon to the ship.
+	//	@param pWeapon A pointer to the weapon to attach.
+	//	@param position The position on the ship that the weapon will be attached,
+	//	offset from the center of the ship. */
 	//virtual void AttachWeapon(Weapon *pWeapon, Vector2 position);
 
 	virtual void AttachItem(IAttachment *item, Vector2 position);
