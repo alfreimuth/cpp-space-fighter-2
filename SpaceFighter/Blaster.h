@@ -12,7 +12,14 @@ public:
 	/** @brief Instantiate a blaster object.
 		@param isActive A flag to determine if the weapon is active. */
 	Blaster(const std::string &key) : Weapon(key) { }
+
+
+	/** @brief Instantiate a blaster object.
+		@param isActive A flag to determine if the weapon is active.
+		@param key The key used to identify the blaster. */
 	Blaster(const std::string& key, TriggerType type) : Weapon(key, true, true, type) { }
+
+
 	virtual ~Blaster() { }
 
 	/** @brief Update the blaster.
@@ -39,11 +46,15 @@ public:
 		@remark If the triggerType doesn't match that of the Blaster, the command will be ignored. */
 	virtual void Fire(TriggerType triggerType);
 
+	virtual void FireSingleShot();
+
+	virtual void FireSpreadShot();
+
+	virtual void FireMoab();
+
 
 private:
 
 	float m_cooldown = 0;
 	float m_cooldownSeconds = 0.35;
-
-
 };

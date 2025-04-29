@@ -25,6 +25,10 @@ public:
 
 	virtual ~Weapon() { }
 
+	/** @brief Set the color of the Projectile.
+		@param m_projectileColor the color needed */
+	virtual void SetProjectileColor(const Color& color) { m_projectileColor = color; }
+
 	/** @brief Update the weapon.
 		@param pGameTime Timing values including time since last update. */
 	virtual void Update(const GameTime& gameTime) { };
@@ -85,8 +89,15 @@ public:
 		@return Gets the type. */
 	virtual std::string GetAttachmentType() const override { return "Weapon"; }
 
+	/** @brief Get a projectile from the pool.
+		@return A pointer to a projectile.
+		@remark This helps us avoid instantiating projectiles while the level is running. */
+	virtual Projectile* GetProjectile();
+
 
 protected:
+
+	Color m_projectileColor = Color::WHITE; // default color
 
 	/** @brief Get the game object that the weapon is attached to.
 		@return A pointer to the game object. */
@@ -96,10 +107,7 @@ protected:
 		@return The screen position of the weapon. */
 	virtual Vector2 GetPosition() const { return m_pGameObject->GetPosition() + m_offset; }
 
-	/** @brief Get a projectile from the pool.
-		@return A pointer to a projectile.
-		@remark This helps us avoid instantiating projectiles while the level is running. */
-	virtual Projectile *GetProjectile();
+	
 
 
 private:

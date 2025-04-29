@@ -10,7 +10,11 @@ Projectile* Weapon::GetProjectile()
 {
 	for (Projectile* pProjectile : *m_pProjectiles)
 	{
-		if (!pProjectile->IsActive()) return pProjectile;
+		if (!pProjectile->IsActive())
+		{
+			pProjectile->SetColor(m_projectileColor);
+			return pProjectile;
+		}
 	}
 
 	return nullptr;

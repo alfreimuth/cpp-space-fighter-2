@@ -55,9 +55,15 @@ Level::Level()
 
 	for (int i = 0; i < 3; i++) 
 	{
-		Blaster* pBlaster = new Blaster("Blaster " + i, StringToTriggerType(i));
+		Blaster* pBlaster = new Blaster("Blaster " + i, TriggerType::StringToTriggerType(i));
 		pBlaster->SetProjectilePool(&m_projectiles);
-		m_pPlayerShip->AttachItem(pBlaster, Vector2::UNIT_Y * -20 + (i*-20));
+
+		// Colorful stuff
+		if (i == 0) pBlaster->SetProjectileColor(Color::WHITE);
+		else if (i == 1) pBlaster->SetProjectileColor(Color::YELLOW);
+		else if (i == 2) pBlaster->SetProjectileColor(Color::PURPLE);
+
+		m_pPlayerShip->AttachItem(pBlaster, Vector2::UNIT_Y * -20);
 	}
 
 	for (int i = 0; i < 100; i++)

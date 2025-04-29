@@ -22,6 +22,14 @@ public:
 		@param pGameTime Timing values including time since last update. */
 	virtual void Update(const GameTime& gameTime);
 
+	/** @brief Set the color of the projectile.
+		@param defaultColor Color choice */
+	virtual void SetColor(const Color& color) { m_Color = color; } 
+
+	/** @brief Get the color of the projectile.
+		@return The current color */
+	virtual const Color& GetColor() const { return m_Color; }
+
 	/** @brief Render the projectile.
 		@param spriteBatch A reference to the game's sprite batch, used for rendering. */
 	virtual void Draw(SpriteBatch& spriteBatch);
@@ -43,6 +51,8 @@ public:
 		@return The type of collision the projectile will have. */
 	virtual CollisionType GetCollisionType() const;
 
+	friend class Weapon;
+	friend class FiringPattern;
 
 protected:
 
@@ -74,8 +84,11 @@ protected:
 		@return The collision type of the projectile. */
 	virtual CollisionType GetProjectileType() const { return CollisionType::Projectile; }
 
-
 private:
+
+	Vector2 m_posiiton;
+
+	Color m_Color = Color::WHITE; // default color
 
 	static Texture *s_pTexture;
 
@@ -85,5 +98,7 @@ private:
 	Vector2 m_direction;
 
 	bool m_wasShotByPlayer = true;
+
+	
 };
 

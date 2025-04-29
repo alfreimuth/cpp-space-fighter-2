@@ -20,6 +20,10 @@ public:
 	Level();
 	virtual ~Level();
 
+	virtual int GetLevelID() const { return m_levelID; }
+
+	virtual void SetLevelID(int id) { m_levelID = id; }
+
 	/** @brief Load the content for the level, including game objects and resources.
 		@param resourceManager A reference to the game's resource manager,
 		used for loading and managing game assets (resources). */
@@ -129,6 +133,8 @@ protected:
 	virtual AudioSample* GetBackgroundAudio() { return m_pAudio; }
 
 private:
+
+	int m_levelID = 0;
 
 	static std::vector<Explosion *> s_explosions;
 	//std::vector<Explosion *>::iterator m_explosionIt;

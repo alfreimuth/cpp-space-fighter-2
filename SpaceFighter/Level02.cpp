@@ -6,6 +6,9 @@
 
 void Level02::LoadContent(ResourceManager& resourceManager)
 {
+
+	SetLevelID(2);
+
 	// Setup enemy ships
 	Texture* pTexture = resourceManager.Load<Texture>("Textures\\BioEnemyShip.png");
 

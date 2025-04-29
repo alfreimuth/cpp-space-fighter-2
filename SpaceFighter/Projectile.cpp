@@ -35,7 +35,7 @@ void Projectile::Draw(SpriteBatch& spriteBatch)
 	if (IsActive())
 	{
 		const float alpha = GetCurrentLevel()->GetAlpha();
-		spriteBatch.Draw(s_pTexture, GetPosition(), Color::WHITE * alpha, s_pTexture->GetCenter());
+		spriteBatch.Draw(s_pTexture, GetPosition(), m_Color * alpha, s_pTexture->GetCenter());
 	}
 }
 
