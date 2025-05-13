@@ -2,6 +2,7 @@
 #pragma once
 
 #include "Ship.h"
+#include "Blaster.h"
 
 /** @brief Represents an enemy ship. */
 class EnemyShip : public Ship
@@ -12,6 +13,9 @@ public:
 	/** @brief Creates a new instance of EnemyShip. */
 	EnemyShip();
 	virtual ~EnemyShip() { }
+
+	
+	
 
 	/** @brief Loads the content for the enemy ship.
 		@param resourceManager A reference to the game's resource manager,
@@ -28,11 +32,15 @@ public:
 	virtual void Initialize(const Vector2 position, const double delaySeconds);
 
 	/** @brief Fires a weapon from the enemy ship. */
-	virtual void Fire() { }
+	virtual void Fire(TriggerType type);
 
 	/** @brief Applies damage to the ship.
 		@param damage The amount of damage to apply. */
 	virtual void Hit(const float damage);
+
+
+	
+	
 
 	/** @brief Gets the string representation of the enemy ship.
 		@return Returns the string "Enemy Ship". */
@@ -41,6 +49,11 @@ public:
 	/** @brief Gets the collision type of the enemy ship.
 		@return Returns the collision type of the enemy ship. */
 	virtual CollisionType GetCollisionType() const { return CollisionType::Enemy | CollisionType::Ship; }
+
+	virtual void AttachItem(IAttachment* item, Vector2 position);
+
+	
+
 
 
 protected:
@@ -57,5 +70,10 @@ private:
 
 	double m_activationSeconds = 0;
 
+	std::vector<Projectile*> m_enemyprojectiles;
+   
+    
+	
+ 
 
 };

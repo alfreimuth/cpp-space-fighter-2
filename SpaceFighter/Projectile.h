@@ -16,7 +16,7 @@ public:
 
 	/** @brief Set the texture that will be used to render the projectile.
 		@param pTexture A pointer to the texture. */
-	static void SetTexture(Texture *pTexture) { s_pTexture = pTexture; }
+	static void SetTexture(Texture* pTexture);
 
 	/** @brief Update the projectile.
 		@param pGameTime Timing values including time since last update. */

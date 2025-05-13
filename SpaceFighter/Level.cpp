@@ -3,6 +3,7 @@
 #include "EnemyShip.h"
 #include "Blaster.h"
 #include "GameplayScreen.h"
+#include "BioEnemyShip.h"
 
 std::vector<Explosion *> Level::s_explosions;
 
@@ -49,6 +50,10 @@ Level::Level()
 	Blaster *pBlaster = new Blaster("Main Blaster");
 	pBlaster->SetProjectilePool(&m_projectiles);
 	m_pPlayerShip->AttachItem(pBlaster, Vector2::UNIT_Y * -20);
+
+
+
+	
 
 	for (int i = 0; i < 100; i++)
 	{
@@ -255,3 +260,4 @@ void Level::Draw(SpriteBatch& spriteBatch)
 	for (Explosion* pExplosion : s_explosions) pExplosion->Draw(spriteBatch);
 	spriteBatch.End();
 }
+
