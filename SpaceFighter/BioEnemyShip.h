@@ -2,6 +2,8 @@
 #pragma once
 
 #include "EnemyShip.h"
+#include "Blaster.h"
+
 
 /** @brief Represents an enemy ship that is biological in nature. */
 class BioEnemyShip : public EnemyShip
@@ -25,9 +27,21 @@ public:
 		@param spriteBatch A reference to the game's sprite batch, used for rendering. */
 	virtual void Draw(SpriteBatch& spriteBatch);
 
+	//fires weapons
+	virtual void Fire(TriggerType type);
+
+	//newly added
+	virtual void LoadContentEnemyProjectiles(ResourceManager& resourceManager);
+
 
 private:
 
-	Texture *m_pTexture = nullptr;
+	Texture* m_pTexture = nullptr;
+	float m_TimeBetweenShots = 2.0f;//time between shots
+	float m_TimeSinceLastShot = 0.0f;//time since the last shot was fired
+	std::vector<Projectile*> m_projectiles;
 
+	Blaster* pBlaster = nullptr;
+	BioEnemyShip* m_pEnemyShip = nullptr;
+	
 };

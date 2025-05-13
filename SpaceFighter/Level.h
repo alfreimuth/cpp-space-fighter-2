@@ -5,6 +5,8 @@
 #include "PlayerShip.h"
 #include "CollisionManager.h"
 #include "Explosion.h"
+#include "EnemyShip.h"
+
 
 using namespace KatanaEngine;
 
@@ -62,6 +64,8 @@ public:
 		@param pBackground A pointer to the texture to use as the background. */
 	virtual void SetBackground(Texture* pBackground) { m_pBackground = pBackground; }
 
+	
+
 	/** @brief Get the alpha value of the screen.
 		@return The alpha value of the screen. */
 	virtual float GetAlpha() const;
@@ -109,6 +113,12 @@ public:
 		return pClosest;
 	}
 
+	virtual std::vector<Projectile*> GetProjectilePool() const
+	{
+
+		return m_projectiles;
+	}
+
 
 protected:
 
@@ -154,6 +164,11 @@ private:
 	PlayerShip* m_pPlayerShip;
 	std::vector<Projectile*> m_projectiles;
 
+	EnemyShip* m_pEnemyShip;
+	std::vector<Projectile*> m_enemyprojectiles;
+
+	
+
 	void CheckCollisions(std::vector<GameObject*>& sector);
 
 	virtual Vector2 GetSectorCount() const { return m_sectorCount; }
@@ -163,5 +178,7 @@ private:
 	virtual unsigned int GetTotalSectorCount() const { return m_totalSectorCount; }
 
 	virtual std::vector<GameObject*>* GetSectors() { return m_pSectors; }
+
+	friend class EnemyShip;
 
 };

@@ -80,6 +80,12 @@ void Ship::FireWeapons(TriggerType triggerType)
 
 void Ship::AttachItem(IAttachment* item, Vector2 position)
 {
+	if (!item)//newly added
+	{
+		//checks for error
+		return;
+	}
+	item->AttachTo(this, position);
 	item->AttachTo(this, position);
 	m_attachments[item->GetKey()] = item;
 }

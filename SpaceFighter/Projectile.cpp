@@ -10,6 +10,13 @@ Projectile::Projectile()
 	SetCollisionRadius(9);
 }
 
+void Projectile::SetTexture(Texture* pTexture)
+{
+   
+	s_pTexture = pTexture; 
+}
+
+
 void Projectile::Update(const GameTime& gameTime)
 {
 	if (IsActive())
