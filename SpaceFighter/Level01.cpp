@@ -2,10 +2,13 @@
 
 #include "Level01.h"
 #include "BioEnemyShip.h"
+#include "Level02.h"
 
 
 void Level01::LoadContent(ResourceManager& resourceManager)
 {
+	SetNextLevelIndex(1);
+	Level::LoadContent(resourceManager);
 	// Setup enemy ships
 	Texture *pTexture = resourceManager.Load<Texture>("Textures\\BioEnemyShip.png");
 
@@ -43,10 +46,11 @@ void Level01::LoadContent(ResourceManager& resourceManager)
 		pEnemy->Initialize(position, (float)delay);
 		AddGameObject(pEnemy);
 	}
-
+	
 	// Setup background
 	SetBackground(resourceManager.Load<Texture>("Textures\\SpaceBackground01.png"));
 
 	Level::LoadContent(resourceManager);
+
 }
 

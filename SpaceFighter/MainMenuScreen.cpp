@@ -21,15 +21,15 @@ void MainMenuScreen::LoadContent(ResourceManager& resourceManager)
 	m_texturePosition = Game::GetScreenCenter() - Vector2::UNIT_Y * 150;
 
 	// Create the menu items
-	const int COUNT = 2;
+	const int COUNT = 4;
 	MenuItem *pItem;
 	Font::SetLoadSize(20, true);
 	Font *pFont = resourceManager.Load<Font>("Fonts\\arial.ttf");
 
 	SetDisplayCount(COUNT);
 
-	enum Items { START_GAME, QUIT };
-	std::string text[COUNT] = { "Start Game", "Quit" };
+	enum Items { START_GAME, START_LEVEL_2, START_LEVEL_3, QUIT };
+	std::string text[COUNT] = { "Start Game","Start Level 2", "Start Level 3", "Quit" };
 
 	for (int i = 0; i < COUNT; i++)
 	{
@@ -47,6 +47,14 @@ void MainMenuScreen::LoadContent(ResourceManager& resourceManager)
 		SetOnRemove([this](){ AddScreen(new GameplayScreen()); });
 		Exit();
 	});
+	GetMenuItem(START_LEVEL_2)->SetOnSelect([this]() {
+		SetOnRemove([this]() { AddScreen(new GameplayScreen(1)); });
+	Exit();
+		});
+	GetMenuItem(START_LEVEL_3)->SetOnSelect([this]() {
+		SetOnRemove([this]() { AddScreen(new GameplayScreen(2)); });
+	Exit();
+		});
 
 	// bind the Exit method to the quit menu item
 	GetMenuItem(QUIT)->SetOnSelect(std::bind(&MainMenuScreen::Exit, this));
